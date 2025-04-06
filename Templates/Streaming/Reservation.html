@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réservation Cinéma</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            width: 50%;
+            margin: auto;
+            margin-top: 50px;
+            padding: 20px;
+            background: #333;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        select {
+            padding: 5px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .cinema {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .screen {
+            width: 100%;
+            height: 50px;
+            background: #fff;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .seats {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        .seat {
+            width: 30px;
+            height: 30px;
+            margin: 5px;
+            background: gray;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+
+        .info {
+            margin-top: 15px;
+        }
+
+        button {
+            background: orange;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: darkorange;
+        }
+
+        .checkbox {
+            width: 30px;
+            height: 30px;
+
+        }
+
+        div .checkbox {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Réservez vos places de cinéma 🎬</h1>
+        <label for="movie">Sélectionnez un film :</label>
+        <select id="movie">
+            <option value="10">{{reservation.Nom_streaming}} (10€)</option>
+        </select>
+
+        <div class="cinema">
+            <div class="screen"></div>
+            <div class="seats" style="width: 100%;">
+
+                <div style="width: 90%;">
+
+                    <!-- Ligne 1 -->
+
+                    <div class="Ligne1" style="display: flex;margin-left: 10%;">
+                        <div>
+                            <input type="checkbox" id="cb5" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb6" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb7" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb8" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb9" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb10" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb11" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb12" class="checkbox">
+
+                        </div>
+
+                    </div>
+
+                    <!-- Ligne 2 -->
+
+                    <div class="Ligne2" style="display: flex;margin-left: 10%;">
+
+                        <div>
+                            <input type="checkbox" id="cb11" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb12" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb13" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb14" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb15" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb16" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb17" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb18" class="checkbox">
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- Ligne 3 -->
+
+                    <div class="Ligne2" style="display: flex;margin-left: 10%;">
+
+                        <div>
+                            <input type="checkbox" id="cb21" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb22" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb23" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb24" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb25" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb26" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb27" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb28" class="checkbox">
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- Ligne 4 -->
+
+                    <div class="Ligne2" style="display: flex;margin-left: 10%;">
+
+                        <div>
+                            <input type="checkbox" id="cb31" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb32" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb33" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb34" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb35" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb36" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb37" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb38" class="checkbox">
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- Ligne 5 -->
+
+                    <div class="Ligne2" style="display: flex;margin-left: 10%;">
+
+                        <div>
+                            <input type="checkbox" id="cb41" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb42" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb43" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb44" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb45" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb46" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb47" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb48" class="checkbox">
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- Ligne 6 -->
+
+                    <div class="Ligne2" style="display: flex;margin-left: 10%;">
+
+                        <div>
+                            <input type="checkbox" id="cb51" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb52" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb53" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb54" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb55" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb56" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb57" class="checkbox">
+
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cb58" class="checkbox">
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+            <p class="info">
+                <span id="count">0</span> place(s) sélectionnée(s) pour un total de <span id="total">0</span>€.
+            </p>
+
+            <button id="reserveBtn">Réserver</button>
+        </div>
+
+
+
+        <script>
+
+
+        </script>
+
+</body>
+
+</html>

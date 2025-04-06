@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'navebare1.css' %}">
+    <title>Document</title>
+    <style>
+
+        /* .lll video{
+            opacity: 0;
+        }
+
+        .lll video:hover {
+            opacity: 1;
+            transition: 1s;
+        } */
+    </style>
+</head>
+
+<body>
+
+    <div class="contenu">
+
+        <nav>
+
+            <div class="lien">
+                <div class="connexion">
+                    <a href="{% url 'connexion' %}">Connexion</a>
+                </div>
+            </div>
+
+            <div class="logo" onclick="window.location.href='{% url 'navebare1' %}'">
+                <img src="{% static 'media/image/3.png' %}" alt="">
+            </div>
+
+
+
+        </nav>
+
+    </div>
+
+    <!-- <div class="lll">
+
+        <video
+            src="../Media/Django_barcode_generator___How_to_create_barcodes_in_Django(720p).mp4" controls>
+        </video>
+    </div> -->
+
+</body>
+
+</html>

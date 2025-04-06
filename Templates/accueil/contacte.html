@@ -1,0 +1,169 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'navebare1.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}">
+    <title>Document</title>
+    <style>
+        .ligne1 {
+            margin: 1%;
+        }
+
+        .ligne1 div {
+            margin: 1%;
+        }
+
+        label .span {
+            margin-top: 1%;
+        }
+
+        div .connexion {
+            border-radius: 25px 25px;
+            width: 25%;
+            height: 30px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        div .connexion:hover {
+            background-color: black;
+        }
+
+        input {
+            border-radius: 15px;
+            height: 50px;
+            width: 600px;
+        }
+
+        textarea {
+            height: 150px;
+            width: 600px;
+            border-radius: 15px;
+        }
+
+        button {
+            height: 40px;
+            width: 100px;
+
+        }
+
+        .page {
+            text-align: center;
+            width: 60%;
+            font-size: 200%;
+            display: flex;
+            justify-content: space-between;
+            top: 0;
+            left: 0;
+        }
+
+        .page a {
+            overflow: hidden;
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            /* background-color: black; */
+            border: 2px solid black;
+            text-decoration: none;
+        }
+
+        .page a:hover {
+            border: 2px solid rgb(255, 0, 0);
+        }
+
+        .page i {
+
+            margin-top: 7px;
+        }
+    </style>
+</head>
+
+<body style="background-color: rgb(0, 0, 0);">
+
+    <div class="contenu" style="overflow: auto;word-wrap: break-word;">
+
+        <nav style="background-color: rgb(91, 91, 91);">
+
+            <div class="lien"
+                style="display: flex;justify-content: space-between;width: 40%;margin-left: 50%;margin-top: -2%;">
+                <div class="connexion" onclick="window.location.href='{% url 'navebare2' %}'">
+                    <a>Accueil</a>
+                </div>
+                <div class="connexion" onclick="window.location.href='{% url 'propo' %}'">
+                    <a>A propo</a>
+                </div>
+                <div class="connexion" onclick="window.location.href='{% url 'contact' %}'">
+                    <a>Contact</a>
+                </div>
+                <div class="connexion" onclick="window.location.href='{% url 'avis' %}'">
+                    <a>Avis</a>
+                </div>
+            </div>
+
+            <div class="logo" onclick="window.location.href='{% url 'navebare2' %}'">
+                <img src="{% static 'media/image/3.png' %}" alt="">
+            </div>
+
+        </nav>
+
+
+        <form action="" method="POST">
+
+            <div class="contenaire"
+                style="height: calc(100% - (75px + 5%));width: 100%;position: fixed;margin-top: 110px;">
+
+                <div
+                    style="background-color: rgb(0, 0, 0);width: 85%;display: flex;justify-content: space-between;overflow: auto;word-wrap: break-word;margin-left: auto;margin-right: auto;">
+
+                    <div style="height: 100%;color: white;width: 30%;">
+                        <h1>EMPLACEMENT</h1><br>
+                        <h3>CANALOlympia Bessengue gare voyageurs bessengue, Douala</h5><br><br><br><br><br>
+
+                            <div>
+                                <h1>SUIVEZ NOUS</h1><br>
+                                <div class="page">
+                                    <a href="" style="color: rgb(0, 105, 196);"><i class="fab fa-facebook"></i></a>
+                                    <a href="" style="color: rgb(255, 145, 0);"> <i class="fab fa-instagram"></i></a>
+                                    <a href="" style="color: rgb(0, 157, 255);"><i class="fab fa-twitter"></i></a>
+
+                                </div>
+                            </div>
+                    </div>
+
+                    <form action="" method="POST">
+
+                        {% csrf_token %}
+
+                        <div class="formulaire" style="height: 100%;color: white;">
+
+                            <h1>FORMULAIRE DE CONTACT</h1><br>
+                            <input type="text" placeholder="     Entrer votre Nom" name="nom"><br><br>
+                            <input type="email" placeholder="     Entrer votre adresse Mail" name="email"><br><br>
+                            <textarea name="message" id="" placeholder="  Entrer votre Message"></textarea><br><br>
+
+                            <button type="submit">SOUMETTRE</button>
+                        </div>
+
+                    </form>
+
+
+                </div>
+
+
+            </div>
+
+        </form>
+
+
+    </div>
+
+
+
+</body>
+
+</html>

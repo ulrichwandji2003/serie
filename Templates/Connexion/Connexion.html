@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{% static 'jquery-3.7.0.min.js' %}"></script>
+    <title>Connexion</title>
+    <style>
+        body {
+            background-image: url("{% static 'Media/image/spider.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .lienn {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10%;
+            width: 60%;
+            margin-left: 15%;
+            height: 12%;
+        }
+
+        div .inscrip {
+            width: 45%;
+            height: 35px;
+            text-align: center;
+            font-size: 130%;
+            border-radius: 25px 25px;
+            border: 2px solid rgb(0, 140, 255);
+            margin-top: 2%;
+            cursor: pointer;
+        }
+
+        div .visite {
+            width: 45%;
+            height: 35px;
+            font-size: 130%;
+            text-align: center;
+            border-radius: 25px 25px;
+            border: 2px solid rgb(0, 140, 255);
+            margin-top: 2%;
+            cursor: pointer;
+        }
+
+        div .inscrip:hover,
+        div .visite:hover {
+            background: rgb(0, 140, 255);
+
+
+        }
+
+        .inscrip a,
+        .visite a {
+            color: rgb(255, 255, 255);
+            width: 200px;
+            height: 15%;
+            margin-top: 12%;
+            text-decoration: none;
+
+        }
+
+        .info {
+            margin-top: 10%;
+            width: 85%;
+            margin-left: 15%;
+            height: 60%;
+        }
+
+        .info input {
+            width: 80%;
+            height: 15%;
+            border-radius: 25px 25px 25px 25px;
+            font-size: 100%;
+            text-align: center;
+            margin-top: 5%;
+        }
+
+        div .con {
+            color: rgb(31, 248, 24);
+            width: 80%;
+            height: 15%;
+            border-radius: 25px 25px 25px 25px;
+            margin-top: 5%;
+            font-size: 100%;
+        }
+
+        div .con:hover {
+            background: rgb(31, 248, 24);
+            color: white;
+        }
+
+
+
+
+
+        #loading-container {
+            display: none;
+            /* Initialement caché */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(182, 182, 182, 0.285);
+            /* Fond semi-transparent */
+            justify-content: center;
+            align-items: center;
+            z-index: 1500;
+            /* Pour être au-dessus des autres éléments */
+        }
+
+        .loader {
+            border: 8px solid #f3f3f3;
+            /* Bordure grise */
+            border-top: 8px solid #3498db;
+            /* Bordure bleue */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    {% include "navebare1.html" %}
+    <br><br><br><br><br><br>
+
+    <div class="containe"
+        style="display: flex;justify-content: space-between;position: fixed;width: 95%;height: 75%;margin-left: 3%;">
+
+        <div class="div1" style="width: 35%;height: 100%;">
+
+            <div class="label" style="margin-top: 15%;">
+                <h1>Lorem, ipsum dolor</h1><br>
+                <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A cupiditate, recusandae ipsam
+                    consequuntur nihil sit quos</h2><br><br>
+                <h4>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque unde beatae facere porro,
+                    voluptates amet quod accusantium vel, molestias commodi quas</h4>
+            </div>
+
+            <div class="lienn">
+
+                <div class="inscrip" onclick="window.location.href='{% url 'inscription' %}'">
+                    <a href="{% url 'inscription' %}">inscription</a>
+                </div>
+
+                <div class="visite" onclick="window.location.href='{% url 'navebare1' %}'">
+                    <a href="{% url 'navebare1' %}" style="margin-top: 15%;">Visite</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="div2" style="width: 35%;height: 100%;">
+
+            <div class="text" style="margin-top: 5%;margin-left: 10%;">
+                <h1>Se connecté à Cine.Nice</h1>
+            </div>
+
+            <div class="info">
+                <input type="text" placeholder="Indiquez votre pseudo"><br>
+                <input type="text" placeholder="Indiquez votre Email"><br>
+                <input type="text" placeholder="Indiquez votre mote de passe"><br><br><br>
+
+
+                <button type="submit" id="monBouton" class="con">connexion</button>
+                <!-- onclick="window.location.href='{% url 'navebare2' %}'" -->
+            </div>
+
+        </div>
+
+    </div>
+    <div id="loading-container">
+        <div class="loader"></div>
+        <p>Chargement...</p>
+    </div>
+
+
+    <script>
+        const bouton = document.getElementById('monBouton');
+        const loadingContainer = document.getElementById('loading-container');
+
+        bouton.addEventListener('click', function () {
+            // Afficher la page de chargement
+            loadingContainer.style.display = 'flex';
+
+            // Simuler un chargement de 5 secondes
+            setTimeout(function () {
+                // Masquer la page de chargement
+                loadingContainer.style.display = 'none';
+                // Rediriger vers une autre page
+                window.location.href="{% url 'navebare2' %}"; // Remplacez par l'URL souhaitée
+            }, 3000); // 5000 millisecondes = 5 secondes
+        });
+    </script>
+
+</body>
+
+</html>

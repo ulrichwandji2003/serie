@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .achat {
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            background-color: white;
+            margin-left: 10%;
+            margin-top: 3%;
+            /* display: none; */
+            box-shadow: 0 0 5px 0 rgb(0, 208, 255);
+        }
+
+        header {
+            background-color: rgb(214, 214, 214);
+        }
+
+
+        .mii input {
+            width: 150%;
+            border-radius: 5px 5px 5px 5px;
+            padding: 5px;
+            border-color: rgb(0, 251, 255);
+
+        }
+
+        form {
+            height: 70%;
+        }
+
+        button {
+
+            background-color: #f00;
+            margin: 5px;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            cursor: pointer;
+        }
+
+        input {
+            height: 20%;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="achat">
+
+        <header style="display: flex;justify-content: space-between;">
+            <div style="margin-left: auto;margin-right: auto;">
+                <h1>PAYER VOTRE TIQUET</h1>
+            </div>
+        </header>
+
+        <form action="" method="POST">
+
+            {% csrf_token %}
+
+            <div style="width: 100%;height: 35%;" class="barre">
+                {% if barcode_base64 %}
+                <h2>Code-Barres Généré :</h2>
+                <img src="{{ barcode_base64 }}" alt="Code-Barres">
+                {% endif %}
+            </div>
+
+            <form method="post" >
+                {% csrf_token %}
+
+                <div style="width: 100%;background-color: #e9eccc;margin-left: auto;margin-right: auto;">
+
+                    <div
+                        style="display: flex;justify-content: space-between;width: 70%;margin-left: auto;margin-right: auto;">
+
+                        <div class="mii" style="margin: 2%;margin-left: 5%;">
+                            <label for="">Nom</label><br>
+                            <input type="text" placeholder="Nom" name="nom"><br>
+                            <label for="">Film</label><br>
+                            <input type="text" placeholder="Film" name="film" value="{{info.Nom_streaming}}"
+                                disabled><br>
+                            <label for="">Salle</label><br>
+                            <input type="text" placeholder="Salle" name="salle" value="NIKI" disabled>
+                        </div>
+
+                        <div class="mii" style="margin: 2%;margin-right: 15%;">
+                            <label for="">Email de reception </label><br>
+                            <input type="email" placeholder="Email" name="email"><br>
+                            <label for="">Date de diffusion</label><br>
+                            <input type="text" placeholder="Date" name="date" value="{{info.Date_streaming}}"
+                                disabled><br>
+                            <label for="">Prix</label><br>
+                            <input type="number" placeholder="Prix" name="montant" value="{{info.Prix_streaming}}" disabled><br>
+
+                        </div>
+
+                    </div><br><br><br>
+
+                    <div style="text-align: center;height: 80% !important;display: flex;margin-left: 30%;">
+                        <button type="submit"
+                            style="width: 25%;height: 20% !important;background-color: rgb(0, 224, 112);">Payer</button>
+                        <button type="submit" style="width: 25%;height: 20% !important;">Recevoire par mail</button>
+                    </div>
+
+                </div><br><br><br>
+
+            </form>
+
+
+
+        </form>
+
+
+
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,199 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'navebare1.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}">
+    <title>Document</title>
+    <style>
+        label video:hover {
+            opacity: 0;
+        }
+
+        .search {
+            position: relative;
+            width: 20%;
+            margin: 0 10px;
+            margin-right: 8%;
+        }
+
+        .search label {
+            position: relative;
+            width: 100%;
+        }
+
+        .search label input {
+            margin-top: 3px;
+            width: 100%;
+            height: 18px;
+            border-radius: 40px;
+            padding: 5px 40px;
+            outline: none;
+            border: 1px solid rgb(255, 0, 0);
+        }
+
+        .search label span {
+            position: absolute;
+            top: 0;
+            left: 20px;
+            font-size: 1.2rem;
+        }
+
+        .ligne1 {
+            margin: 1%;
+        }
+
+        .ligne1 div {
+            margin: 1%;
+        }
+
+
+        div .connexion {
+            border-radius: 25px 25px;
+            width: 25%;
+            height: 30px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .lien div {
+            margin: 3%;
+            text-align: center;
+        }
+
+        div .connexion:hover {
+            background-color: rgb(0, 0, 0);
+        }
+
+
+        .images {
+            width: 23%;
+            height: 45%;
+            border-radius: 10px;
+
+        }
+
+        .img {
+            width: 100%;
+            height: 80%;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .contenaire .images {
+            margin: 1%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contenu" style="overflow: auto;word-wrap: break-word;">
+
+        <nav style="background-color: rgb(28, 28, 28);">
+
+            <div class="lien"
+                style="display: flex;justify-content: space-between;width: 40%;margin-left: 50%;margin-top: -3%;">
+                <div class="connexion" onclick="window.location.href='{% url 'navebare2' %}'">
+                    <a>Accueil</a>
+                </div>
+                <div class="connexion" onclick="window.location.href='{% url 'propo' %}'">
+                    <a>A propo</a>
+                </div>
+                <div class="connexion" onclick="window.location.href='{% url 'contact' %}'">
+                    <a>Contact</a>
+                </div>
+                <div class="connexion" onclick="window.location.href='{% url 'avis' %}'">
+                    <a>Avis</a>
+                </div>
+            </div>
+
+            <div class="logo" onclick="window.location.href='{% url 'navebare2' %}'">
+                <img src="{% static 'media/image/3.png' %}" alt="">
+            </div>
+
+        </nav>
+
+
+        <div class="choix"
+            style="position: fixed;margin-top: 75px;height: 5%;width: 100%;display: flex;justify-content: space-between;">
+
+            <div class="choisir" style="display: flex;justify-content: space-between;width: 30%;margin-top: 1%;">
+
+                <div>
+                    <a href="{% url 'film' %}">Film</a>
+                </div>
+                <div>
+                    <a href="{% url 'serie' %}">Série</a>
+                </div>
+                <div>
+                    <a href="{% url 'anime' %}">Animé</a>
+                </div>
+                <div>
+                    <a href="{% url 'comedie' %}">Comedie</a>
+                </div>
+
+            </div>
+
+            <div class="search">
+                <label for="">
+                    <input type="text" placeholder="search bare" class="search" name="recherche">
+                    <span class="fas fa-search"></span>
+                </label>
+            </div>
+
+        </div>
+
+        <form action="" method="POST">
+
+            <div class="contenaire"
+                style="height: calc(100% - (75px + 5%));width: 100%;position: fixed;margin-top: 110px;overflow: auto;word-wrap: break-word;background-color: rgb(96, 255, 16);display: flex;">
+
+
+
+                <div
+                    style="background-color: rgb(0, 0, 0);width: 100%;display: flex;overflow: auto;flex-wrap: wrap;">
+
+                    {% for stream in stream %}
+
+                    <div class="images" style="background-color: rgb(94, 94, 94);cursor: pointer;overflow: hidden;"
+                        onclick="window.location.href='{% url 'detail_stream' stream.pk %}'">
+
+                        <label for="" style="cursor: pointer;">
+                            <div class="img" style="background-image: url('{{stream.Image_streaming.url}}');
+                        background-repeat: no-repeat;
+                        background-size: cover;"></div>
+
+                            <div class="span" style="margin-left: 3%;cursor: pointer;color: white;">
+                                <span>
+                                    <h3>{{stream.Nom_streaming}}</h3>Le {{stream.Date_streaming}}
+                                </span><br>
+                            </div>
+                        </label>
+
+                    </div><br>
+
+                    {% endfor %}
+
+
+
+                </div>
+
+
+
+
+            </div>
+
+        </form>
+
+
+    </div>
+
+
+
+</body>
+
+</html>

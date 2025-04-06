@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+div .contenu{
+    position: absolute;
+}
+
+.contenu nav{
+    position: absolute;
+    /* position: fixed; */
+    width: 100%;
+    height: 74px;
+    /* overflow: auto; */
+    color: white;
+    
+}
+.logo{
+    position: relative;
+}
+.logo img{
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    cursor: pointer;
+
+}
+div .lien {
+    position: absolute;
+    width: 200px;
+    margin-left: 75%;
+    top: 50px;
+}
+.lien a{
+    text-decoration: none;
+}
+

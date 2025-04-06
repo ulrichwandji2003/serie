@@ -1,0 +1,246 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'navebare1.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}">
+    <title>Document</title>
+    <style>
+        .ligne1 {
+            margin: 1%;
+        }
+
+        .ligne1 div {
+            margin: 1%;
+        }
+
+        label .span {
+            margin-top: 1%;
+        }
+
+        div .connexion {
+            border-radius: 25px 25px;
+            width: 25%;
+            height: 30px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        div .connexion:hover {
+            background-color: black;
+        }
+
+        div .connexion a:hover {
+            color: white;
+        }
+
+
+
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 40px;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        .film {
+            display: inline-block;
+            margin-right: 20px;
+            text-align: center;
+        }
+
+        .film img {
+            width: 200px;
+            height: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        form label,
+        form input,
+        form select,
+        form button {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 30px;
+        }
+    </style>
+</head>
+
+<body style="background-color: rgb(213, 213, 213);">
+
+    <div class="contenu" style="overflow: auto;word-wrap: break-word;">
+
+        <nav style="background-color: rgb(91, 91, 91);">
+
+            <div class="lien"
+                style="display: flex;justify-content: space-between;width: 40%;margin-left: 50%;margin-top: -2%;">
+                <div class="connexion" onclick="window.location.href='{% url 'navebare2' %}'">
+                    <a>Accueil</a>
+                </div>
+                <div class="connexion" onclick="window.location.href='{% url 'propo' %}'">
+                    <a>A propo</a>
+                </div>
+                <div class="connexion" onclick="window.location.href='{% url 'contact' %}'">
+                    <a>Contact</a>
+                </div>
+                <div class="connexion" onclick="window.location.href='{% url 'avis' %}'">
+                    <a>Avis</a>
+                </div>
+            </div>
+
+            <div class="logo" onclick="window.location.href='{% url 'navebare2' %}'">
+                <img src="{% static 'media/image/3.png' %}" alt="">
+            </div>
+
+        </nav>
+
+
+        <form action="" method="POST">
+
+            <div class="contenaire" style="height: calc(100% - (75px + 5%));width: 100%;margin-top: 110px;">
+
+                <div style="background-color: rgb(213, 213, 213);width: 100%;overflow: auto;">
+
+                    <main>
+                        <section id="accueil">
+                            <h2>Bienvenue sur notre site de cinéma !</h2>
+                            <p>Découvrez les dernières sorties, les horaires des séances et réservez vos places en
+                                ligne.</p>
+                        </section>
+
+                        <section id="films">
+                            <h2>Films à l'affiche</h2>
+                            <div class="film">
+                                <img src="film1.jpg" alt="Affiche du film 1">
+                                <h3>Titre du film 1</h3>
+                                <p>Description du film 1...</p>
+                            </div>
+                            <div class="film">
+                                <img src="film2.jpg" alt="Affiche du film 2">
+                                <h3>Titre du film 2</h3>
+                                <p>Description du film 2...</p>
+                            </div>
+                            {/* Ajoutez d'autres films ici */}
+                        </section>
+
+                        <section id="seances">
+                            <h2>Horaires des séances</h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Film</th>
+                                        <th>Salle</th>
+                                        <th>Horaire</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Film 1</td>
+                                        <td>Salle 1</td>
+                                        <td>14h00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Film 2</td>
+                                        <td>Salle 2</td>
+                                        <td>16h30</td>
+                                    </tr>
+                                    {/* Ajoutez d'autres séances ici */}
+                                </tbody>
+                            </table>
+                        </section>
+
+                        <section id="reservation">
+                            <h2>Réservation en ligne</h2>
+                            <form>
+                                <label for="film">Film :</label>
+                                <select id="film" name="film">
+                                    <option value="film1">Film 1</option>
+                                    <option value="film2">Film 2</option>
+                                </select>
+                                <label for="seance">Séance :</label>
+                                <select id="seance" name="seance">
+                                    <option value="seance1">14h00 - Salle 1</option>
+                                    <option value="seance2">16h30 - Salle 2</option>
+                                </select>
+                                <label for="places">Nombre de places :</label>
+                                <input type="number" id="places" name="places" min="1" value="1">
+                                <button type="submit">Réserver</button>
+                            </form>
+                        </section>
+
+                        <section id="compte">
+                            <h2>Mon Compte</h2>
+                            <p>Connectez-vous pour consulter vos réservations et vos informations personnelles.</p>
+                            <a href="connexion.html">Se connecter</a>
+                        </section>
+                    </main>
+
+                    <footer>
+                        <p>&copy; 2024 Site de Cinéma</p>
+                    </footer>
+
+                </div>
+
+
+            </div>
+
+        </form>
+
+
+    </div>
+
+    <script>
+        // Exemple : Afficher un message de confirmation après la réservation
+        const reservationForm = document.querySelector('#reservation form');
+
+        reservationForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Empêcher la soumission par défaut du formulaire
+
+            alert('Réservation effectuée !');
+            // Ici, vous pouvez ajouter du code pour envoyer les données du formulaire à un serveur
+        });
+    </script>
+
+
+
+</body>
+
+</html>
