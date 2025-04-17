@@ -1,143 +1,193 @@
 {% load static %}
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'navebare1.css' %}">
     <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}">
-    <title>Document</title>
+    <title>CINE NICE</title>
     <style>
-        .ligne1 {
-            margin: 1%;
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            padding-top: 110px;
         }
 
-        .ligne1 div {
-            margin: 1%;
+
+        header {
+            background-color: #4d4d4d;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            height: 50px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
         }
 
-        label .span {
-            margin-top: 1%;
+        header .logo {
+            display: flex;
+            align-items: center;
         }
 
-        div .connexion {
-            border-radius: 25px 25px;
-            width: 25%;
-            height: 30px;
-            text-align: center;
+        header .logo img {
+            width: 90px;
+            height: 90px;
+            margin-right: 10px;
+        }
+
+        header nav {
+            display: flex;
+            align-items: center;
+            margin-right: 400px;
+            gap: 35px;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 16px;
+
+        }
+
+        header nav a:hover {}
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 10px 0 0 10px;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 5px 10px;
+            border: none;
+            background-color: red;
+            color: white;
+            border-radius: 0 10px 10px 0;
             cursor: pointer;
         }
 
-        div .connexion:hover {
-            background-color: black;
-        }
-
-        div .connexion a:hover {
-            color: white;
-        }
-
-
-
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        nav li {
-            display: inline;
-            margin-right: 20px;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        main {
-            padding: 40px;
-        }
-
-        section {
-            margin-bottom: 30px;
-        }
-
-        .film {
-            display: inline-block;
-            margin-right: 20px;
-            text-align: center;
-        }
-
-        .film img {
-            width: 200px;
-            height: auto;
-        }
-
-        table {
+        .categories {
+            background-color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            position: fixed;
+            top: 70px;
+            left: 0;
             width: 100%;
-            border-collapse: collapse;
+            z-index: 999;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        th,
-        td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
+        .categories a {
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
         }
 
-        form label,
-        form input,
-        form select,
-        form button {
-            display: block;
-            margin-bottom: 10px;
+        .categories a:hover {
+            text-decoration: underline;
         }
 
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 30px;
+        .movies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .movie {
+            background-color: rgb(254, 254, 254);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: auto;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .movie img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .movie-info {
+            padding: 10px;
+            background-color: cyan;
+        }
+
+        .movie-info h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .movie-info p {
+            margin: 5px 0 0;
+            font-size: 14px;
+        }
+
+        .niff {
+            display: flex;
+            gap: 25px;
+        }
+        .search {
+            display: flex;
+            margin-right: 50px;
         }
     </style>
 </head>
 
-<body style="background-color: rgb(213, 213, 213);">
-
-    <div class="contenu" style="overflow: auto;word-wrap: break-word;">
-
-        <nav style="background-color: rgb(91, 91, 91);">
-
-            <div class="lien"
-                style="display: flex;justify-content: space-between;width: 40%;margin-left: 50%;margin-top: -2%;">
-                <div class="connexion" onclick="window.location.href='{% url 'navebare2' %}'">
-                    <a>Accueil</a>
-                </div>
-                <div class="connexion" onclick="window.location.href='{% url 'propo' %}'">
-                    <a>A propo</a>
-                </div>
-                <div class="connexion" onclick="window.location.href='{% url 'contact' %}'">
-                    <a>Contact</a>
-                </div>
-                <div class="connexion" onclick="window.location.href='{% url 'avis' %}'">
-                    <a>Avis</a>
-                </div>
-            </div>
-
-            <div class="logo" onclick="window.location.href='{% url 'navebare2' %}'">
-                <img src="{% static 'media/image/3.png' %}" alt="">
-            </div>
-
+<body>
+    <header>
+        <div class="logo" onclick="window.location.href='{% url 'navebare2' %}'">
+            <img src="{% static 'media/image/3.png' %}" alt="">
+        </div>
+        <nav>
+            <a href="{% url 'navebare2' %}">Accueil</a>
+            <a href="{% url 'propo' %}">A propos</a>
+            <a href="{% url 'contact' %}">Contact</a>
+            <a href="{% url 'avis' %}">Avis</a>
         </nav>
 
+    </header>
+    <div class="categories">
+        <div class="niff">
+            <a href="{% url 'film' %}">Film</a>
+            <a href="{% url 'serie' %}">Série</a>
+            <a href="{% url 'anime' %}">Animé</a>
+            <a href="{% url 'comedie' %}">Comédie</a>
+        </div>
 
+        <div class="search">
+            <div class="search-bar">
+                <input type="text" placeholder="search bar" style="width: 200%;">
+                <button>🔍</button>
+            </div>
+        </div>
+
+    </div>
+    <div class="movies">
+        
         <form action="" method="POST">
 
-            <div class="contenaire" style="height: calc(100% - (75px + 5%));width: 100%;margin-top: 110px;">
+            <div class="contenaire" style="height: calc(100% - (75px + 5%));width: 100%;color: white;">
 
-                <div style="background-color: rgb(213, 213, 213);width: 100%;overflow: auto;">
+                <div style="width: 100%;overflow: auto;">
 
                     <main>
                         <section id="accueil">
@@ -224,23 +274,7 @@
 
         </form>
 
-
     </div>
-
-    <script>
-        // Exemple : Afficher un message de confirmation après la réservation
-        const reservationForm = document.querySelector('#reservation form');
-
-        reservationForm.addEventListener('submit', (event) => {
-            event.preventDefault(); // Empêcher la soumission par défaut du formulaire
-
-            alert('Réservation effectuée !');
-            // Ici, vous pouvez ajouter du code pour envoyer les données du formulaire à un serveur
-        });
-    </script>
-
-
-
 </body>
 
 </html>

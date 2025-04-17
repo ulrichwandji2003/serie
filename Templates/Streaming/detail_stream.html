@@ -1,278 +1,199 @@
-{% load static %}
-
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../Static/jquery-3.7.0.min.js">
-    <link rel="stylesheet" href="{% static 'jquery-3.7.0.min.js' %}">
-    <script src="{% static 'jquery-3.7.0.min.js' %}"></script>
-    <title>Document</title>
+    <title>Cine.Nice</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            font-family: sans-serif;
             margin: 0;
-            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            height: 50px;
         }
 
         .container {
-            position: relative;
-            width: 100%;
-            height: 62%;
-            /* margin: 20px auto; */
-            background-color: white;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            /* margin: 1rem auto; */
+            /* padding: 0 1rem; */
         }
 
-        header {
-            background-color: #333;
-            color: white;
-            padding: 2%;
-            text-align: center;
-        }
-
-        h1 {
-            margin: 0;
-        }
-
-        .movie-info {
-            position: absolute;
-            margin: 1%;
-            padding: 2%;
+        .movie-card {
             display: flex;
-            width: 40%;
-            background-image: url("{{detail_stream.Image_streaming.url}}");
-            background-color: #cbe00b;
-            background-size: cover;
-            background-repeat: no-repeat;
-            height: 80%;
+            flex-wrap: wrap;
+            background: #e9d7d7;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* border-radius: 8px; */
+            overflow: hidden;
+            width: 1365px;
+
+        }
+
+        .movie-image {
+            flex: 1 1 300px;
+            max-width: 650px;
+            object-fit: cover;
         }
 
         .movie-details {
-            position: absolute;
-            width: 45%;
-            margin-left: 50%;
+            width: 125%;
+            flex: 2 1 400px;
+            padding: 1.5rem;
         }
 
-        .movie-title {
-            font-size: 2em;
-            margin-bottom: 1%;
+        .movie-details h2 {
+            margin-top: 0;
+            color: #222;
         }
 
-        .genre {
-            color: #777777;
-            margin-bottom: 2%;
+        .description {
+            margin: 1rem 0;
+            line-height: 1.6;
         }
 
-        .synopsis {
-            margin-bottom: 2%;
-            position: absolute;
+        .movie-info {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
         }
 
-        .details {
-            margin-bottom: 2%;
+        .movie-info li {
+            margin-bottom: 0.5rem;
         }
 
-        .showtimes {
-            padding: 2%;
-        }
-
-        .showtime-date {
-            font-weight: bold;
-            margin-bottom: 1%;
-        }
-
-        .showtime-times {
+        .buttons {
             display: flex;
-            gap: 1%;
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
 
-        .showtime {
-            padding: 10px;
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn.primary {
+            background-color: #e50914;
+            color: #fff;
+        }
+
+        .btn.secondary {
+            background-color: #f5f5f5;
+            color: #333;
             border: 1px solid #ccc;
-            cursor: pointer;
         }
 
-        .buy-ticket {
+        .btn.tertiary {
+            background-color: #ddd;
+            color: #333;
+        }
+
+        .date-selection {
+            margin-top: 2rem;
             text-align: center;
-            padding: 2%;
         }
 
-        .movie-details button {
-
-            background-color: #f00;
-            margin: 5px;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            cursor: pointer;
+        .date-selection h3 {
+            margin-bottom: 1rem;
         }
 
-        button {
-
-            background-color: #f00;
-            margin: 5px;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .autre a {
-            text-decoration: none;
-            position: absolute;
-            background-color: aqua;
-            border-radius: 15px;
-            margin-left: 14%;
-            padding: 2%;
-            width: 40%;
-        }
-
-        .autre {
-            position: relative;
-            background-color: #f00;
+        .time-buttons {
             display: flex;
-            justify-content: space-between;
-            width: 35%;
-            margin-left: 35%;
-            text-align: center;
-            display: none;
+            justify-content: center;
+            gap: 1rem;
         }
 
-        .suivre {
-            margin-left: 13px;
-            bottom: 30%;
-            display: none;
-            background-color: transparent;
-            position: fixed;
-            width: 44%;
-            height: 50%;
+        .time-btn {
+            padding: 0.5rem 1rem;
+            background-color: #e50914;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .time-btn:hover {
+            background-color: #c40812;
+        }
+
+        @media (max-width: 768px) {
+            .movie-card {
+                flex-direction: column;
+                max-width: 100%;
+            }
+
+            .movie-image {
+                max-width: 100%;
+            }
+
+            .buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+                max-width: 72%;
+            }
         }
     </style>
 </head>
 
 <body>
-
-    <div style="overflow: auto;word-wrap: break-word;width: 100%;height: 100vh">
-
-        <header>
-            <h1>Cine.Nice</h1>
-        </header>
-
-        <div class="container">
-
-
-            <div style="display: flex;justify-content: space-between;">
-
-                <div class="movie-info">
-
-                </div>
-                <div class="movie-details">
-                    <h2 class="movie-title">{{detail_stream.Nom_streaming}}</h2>
-                    <div class="genre">{{detail_stream.genre}}</div>
-                    <div class="synopsis" style="height: 15%;word-wrap: break-word;overflow: hidden;">
-                        {{detail_stream.Description}}
-                    </div><br><br><br>
-                    <div class="details">
-                        <p><strong>Réalisateur:</strong> {{detail_stream.Realisateur}}</p>
-                        <p><strong>Acteurs:</strong> {{detail_stream.Acteurs}}</p>
-                        <p><strong>Durée:</strong> {{detail_stream.Duree_streaming}}</p>
-                        <p><strong>Note:</strong> IMCN {{detail_stream.Note}}</p>
-                        <p><strong>Date de diffusion au cinema:</strong> {{detail_stream.Date_streaming}}</p>
-                    </div>
-
-                    <button onclick="window.location.href='{% url 'code_barre' detail_stream.pk %}'">Acheter un billet</button>
-
-                    {% if detail_stream.Date_streaming %}
-                    <button class="res" style="width: 35%;"
-                        onclick="window.location.href='{% url 'reservation' detail_stream.pk %}'">Resevation de Place</button>
-                    {% else %}
-                    <button class="res" style="width: 35%;"
-                        onclick="window.location.href='{% url 'reservation_salle' %}'">Resevation Salle</button>
-                    {% endif%}
-                    <button style="width: 25%;" onclick="goBack()">Retour</button>
-
+    <header class="header">
+        <h1>Cine.Nice</h1>
+    </header>
+    <main class="container">
+        <div class="movie-card">
+            <img src="{{detail_stream.Image_streaming.url}}" alt="Affiche du film" class="movie-image">
+            <div class="movie-details">
+                <h2>{{detail_stream.Nom_streaming}}</h2>
+                <p class="description">
+                    {{detail_stream.Description}}
+                </p>
+                <ul class="movie-info">
+                    <li><strong>Réalisateur:</strong> {{detail_stream.Realisateur}}</li>
+                    <li><strong>Acteurs:</strong> {{detail_stream.Acteurs}}</li>
+                    <li><strong>Durée:</strong> {{detail_stream.Duree_streaming}}</li>
+                    <li><strong>Note:</strong> {{detail_stream.Note}}</li>
+                    <li><strong>Date de diffusion au cinéma:</strong> {{detail_stream.Date_streaming}}</li>
+                </ul>
+                <div class="buttons">
+                    <button class="btn primary"
+                        onclick="window.location.href='{% url 'code_barre' detail_stream.pk %}'">Acheter un
+                        billet</button>
+                    <button class="btn secondary"
+                        onclick="window.location.href='{% url 'reservation' detail_stream.pk %}'">Réservation de
+                        Place</button>
+                    <button class="btn tertiary" onclick="goBack()">Retour</button>
                 </div>
             </div>
-
-
-
-            <!-- <div class="autre">
-                <a href="">Reservetion de place</a>
-                <a href="" style="margin-left: 75%;">reservation de salle</a>
-
-            </div> -->
-
-
         </div>
-
-
-        <div class="suivre">
-            <video style="width: 100%;" controls>
-                <source src="{{detail_stream.video_streaming.url}}" type="video/mp4">
-            </video>
-
-        </div>
-
-
-        <div
-            style="display: flex;justify-content: space-between;width: 100%;height: 20%;background-color: rgb(131, 138, 133);margin-top:2%;">
-
-            <div class="showtimes" style="margin-left: 1%;">
-                <div class="showtime-date">Sélectionnez une date :</div>
-                <div class="showtime-times">
-                    <div class="showtime">13:00</div>
-                    <div class="showtime">14:45</div>
-                    <div class="showtime">17:30</div>
-                </div>
+        <div class="date-selection">
+            <h3>Sélectionnez une date :</h3>
+            <div class="time-buttons">
+                <button class="time-btn">13:00</button>
+                <button class="time-btn">14:45</button>
+                <button class="time-btn">17:30</button>
             </div>
-
-            <div class="buy-ticket" style="margin-right: 10%;">
-                <button>Sequence Film</button>
-            </div>
-
         </div>
-
-
-    </div>
-
-
-
-
-
+    </main>
 
     <script>
-
-        $(".buy-ticket").click(function () {
-            $(".suivre").toggle({
-                "display": 'block'
-            });
-        })
-
-
-        $(".x").click(function () {
-            $(".achat").toggle({
-                "display": 'none'
-            });
-        })
-
-        $(".res").click(function () {
-            $(".autre").toggle({
-                "display": 'block'
-            });
-        })
-
-
         function goBack() {
             window.history.back();
         }
-
-
     </script>
-
-
 </body>
 
 </html>

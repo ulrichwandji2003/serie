@@ -1,6 +1,7 @@
 from inspect import ismethod
-from django.shortcuts import render
+from django.shortcuts import *
 from Streaming.models import Streaming,Contact
+from Reservation.models import Avis
 
 # Create your views here.
 
@@ -13,8 +14,24 @@ def Inscription(request):
 def Connexion(request):
     return render(request, "Connexion/Connexion.html")
 
-def Avis(request):
-    return render(request, "accueil/avis.html")
+def avis(request):
+
+    if request.method == 'POST':
+        # Récupérer les données du formulaire
+        nom = request.POST.get('nom')
+        commentaire = request.POST.get('commentaire')
+        note = request.POST.get('note')
+
+        # Créer un nouvel avis
+        Avis.objects.create(nom=nom, commentaire=commentaire, note=note)
+
+        # Rediriger vers la même page après soumission
+        return redirect('avis')
+
+    # Récupérer tous les avis pour les afficher
+    avis_list = Avis.objects.all().order_by('-date')
+    return render(request, 'accueil/avis.html', {'avis_list': avis_list})
+    
 
 def Propo(request):
     return render(request, "accueil/propo.html")

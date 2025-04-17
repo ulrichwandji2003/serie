@@ -7,5 +7,7 @@ urlpatterns = [
     path("cine.nice/anime", anime, name="anime"),
     path("cine.nice/serie", serie, name="serie"),
     path("cine.nice/comedie", comedie, name="comedie"),
+    path("dashborde", dashbord, name="dashbord"),
+
 
 ]

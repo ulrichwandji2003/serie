@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}">
+    <title>CINE NICE</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+        }
+
+        header {
+            background-color: #4d4d4d;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            height: 50px;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo img {
+            width: 90px;
+            height: 90px;
+            margin-right: 10px;
+        }
+        header nav {
+            display: flex;
+            align-items: center;
+            margin-right: 400px;
+            gap: 35px;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 16px;
+            
+        }
+
+        header nav a:hover {
+            
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 10px 0 0 10px;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 5px 10px;
+            border: none;
+            background-color: red;
+            color: white;
+            border-radius: 0 10px 10px 0;
+            cursor: pointer;
+        }
+
+        .categories {
+            background-color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .categories a {
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+        }
+
+        .categories a:hover {
+            text-decoration: underline;
+        }
+
+        .movies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .movie {
+            background-color: rgb(254, 254, 254);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .movie img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .movie-info {
+            padding: 10px;
+            background-color: cyan;
+        }
+
+        .movie-info h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .movie-info p {
+            margin: 5px 0 0;
+            font-size: 14px;
+        }
+
+        .niff {
+            display: flex;
+            gap: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo" onclick="window.location.href='{% url 'navebare2' %}'">
+            <img src="{% static 'media/image/3.png' %}" alt="">
+        </div>
+        <nav>
+            <a href="{% url 'navebare2' %}">Accueil</a>
+            <a href="{% url 'propo' %}">A propos</a>
+            <a href="{% url 'contact' %}">Contact</a>
+            <a href="{% url 'avis' %}">Avis</a>
+        </nav>
+
+    </header>
+    <div class="categories">
+        <div class="niff">
+            <a href="{% url 'film' %}">Film</a>
+            <a href="{% url 'serie' %}">Série</a>
+            <a href="{% url 'anime' %}">Animé</a>
+            <a href="{% url 'comedie' %}">Comédie</a>
+        </div>
+
+        <div>
+            <div class="search-bar">
+                <input type="text" placeholder="search bar" style="width: 200%;">
+                <button>🔍</button>
+            </div>
+        </div>
+
+    </div>
+    <div class="movies">
+        
+        {% include 'acceuil/propo.html' %}
+        
+    </div>
+</body>
+
+</html>

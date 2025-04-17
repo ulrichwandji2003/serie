@@ -1,175 +1,259 @@
 {% load static %}
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'navebare1.css' %}">
     <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}">
-    <title>Document</title>
+    <title>CINE NICE</title>
     <style>
-        .ligne1 {
-            margin: 1%;
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            padding-top: 110px;
         }
 
-        .ligne1 div {
-            margin: 1%;
+
+        header {
+            background-color: #4d4d4d;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            height: 50px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
         }
 
-        label .span {
-            margin-top: 1%;
+        header .logo {
+            display: flex;
+            align-items: center;
         }
 
-        div .connexion {
-            border-radius: 25px 25px;
-            width: 25%;
-            height: 30px;
-            text-align: center;
+        header .logo img {
+            width: 90px;
+            height: 90px;
+            margin-right: 10px;
+        }
+
+        header nav {
+            display: flex;
+            align-items: center;
+            margin-right: 400px;
+            gap: 35px;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 16px;
+
+        }
+
+        header nav a:hover {}
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 10px 0 0 10px;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 5px 10px;
+            border: none;
+            background-color: red;
+            color: white;
+            border-radius: 0 10px 10px 0;
             cursor: pointer;
         }
 
-        div .connexion:hover {
-            background-color: black;
+        .categories {
+            background-color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        div .connexion a:hover {
-            color: white;
-        }
-
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        nav li {
-            display: inline;
-            margin-right: 20px;
-        }
-
-        nav a {
-            color: #fff;
+        .categories a {
             text-decoration: none;
+            color: black;
+            font-size: 16px;
         }
 
-        main {
+        .categories a:hover {
+            text-decoration: underline;
+        }
+
+        .movies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
             padding: 20px;
         }
 
-        section {
-            margin-bottom: 30px;
+        .movie {
+            background-color: rgb(254, 254, 254);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: auto;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        form label,
-        form input,
-        form textarea,
-        form button {
-            display: block;
+        .movie img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .movie-info {
+            padding: 10px;
+            background-color: cyan;
+        }
+
+        .movie-info h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .movie-info p {
+            margin: 5px 0 0;
+            font-size: 14px;
+        }
+
+        .niff {
+            display: flex;
+            gap: 25px;
+        }
+
+        .search {
+            display: flex;
+            margin-right: 50px;
+        }
+
+        .review {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 10px;
         }
 
-        #avis-liste .avis {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-bottom: 10px;
+        .review-header h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
         }
 
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
+        .stars {
+            font-size: 18px;
+            color: #FFD700;
+            /* Couleur des étoiles */
+        }
+
+        .review-text {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
         }
     </style>
 </head>
 
-<body style="background-color: rgb(213, 213, 213);">
-
-    <div class="contenu" style="overflow: auto;word-wrap: break-word;">
-
-        <nav style="background-color: rgb(91, 91, 91);">
-
-            <div class="lien"
-                style="display: flex;justify-content: space-between;width: 40%;margin-left: 50%;margin-top: -2%;">
-                <div class="connexion" onclick="window.location.href='{% url 'navebare2' %}'">
-                    <a>Accueil</a>
-                </div>
-                <div class="connexion" onclick="window.location.href='{% url 'propo' %}'">
-                    <a>A propo</a>
-                </div>
-                <div class="connexion" onclick="window.location.href='{% url 'contact' %}'">
-                    <a>Contact</a>
-                </div>
-                <div class="connexion" onclick="window.location.href='{% url 'avis' %}'">
-                    <a>Avis</a>
-                </div>
-            </div>
-
-            <div class="logo" onclick="window.location.href='{% url 'navebare2' %}'">
-                <img src="{% static 'media/image/3.png' %}" alt="">
-            </div>
-
+<body>
+    <header>
+        <div class="logo" onclick="window.location.href='{% url 'navebare2' %}'">
+            <img src="{% static 'media/image/3.png' %}" alt="">
+        </div>
+        <nav>
+            <a href="{% url 'navebare2' %}">Accueil</a>
+            <a href="{% url 'propo' %}">A propos</a>
+            <a href="{% url 'contact' %}">Contact</a>
+            <a href="{% url 'avis' %}">Avis</a>
         </nav>
 
+    </header>
+    <div class="categories">
+        <div class="niff">
+            <a href="{% url 'film' %}">Film</a>
+            <a href="{% url 'serie' %}">Série</a>
+            <a href="{% url 'anime' %}">Animé</a>
+            <a href="{% url 'comedie' %}">Comédie</a>
+        </div>
 
-        <form action="" method="POST">
-
-            <div class="contenaire"
-                style="height: calc(100% - (75px + 5%));width: 100%;position: fixed;margin-top: 110px;">
-
-                <div style="background-color: rgb(213, 213, 213);width: 100%;overflow: auto;">
-
-                    <main>
-                        <section id="accueil">
-                            <h2>Bienvenue sur notre site de cinéma !</h2>
-                            <p>Laissez-nous vos impressions et aidez-nous à nous améliorer.</p>
-                        </section>
-
-                        <section id="avis">
-                            <h2>Laissez un avis</h2>
-                            <form id="avis-form">
-                                <label for="nom">Nom :</label>
-                                <input type="text" id="nom" name="nom" required>
-
-                                <label for="commentaire">Commentaire :</label>
-                                <textarea id="commentaire" name="commentaire" required></textarea>
-
-                                <button type="submit">Envoyer l'avis</button>
-                            </form>
-
-                            <div id="avis-liste">
-                                <h2>Avis des utilisateurs</h2>
-                                {/* Les avis seront ajoutés ici par JavaScript */}
-                            </div>
-                        </section>
-                    </main>
-
-                    <div class="rating">
-                        <span class="star" data-rating="1" style="color: yellow;">&#9733;</span>
-                        <span class="star" data-rating="2">&#9733;</span>
-                        <span class="star" data-rating="3">&#9733;</span>
-                        <span class="star" data-rating="4">&#9733;</span>
-                        <span class="star" data-rating="5">&#9733;</span>
-                    </div>
-
-                    <footer>
-                        <p>&copy; 2024 Site de Cinéma</p>
-                    </footer>
-
-                </div>
-
-
+        <div class="search">
+            <div class="search-bar">
+                <input type="text" placeholder="search bar" style="width: 200%;">
+                <button>🔍</button>
             </div>
-
-        </form>
-
+        </div>
 
     </div>
+    <div class="movies">
 
+        <div class="review">
+            <div class="review-header">
+                <h3>Jean Dupont</h3>
+                <div class="stars">
+                    ★★★★☆
+                </div>
+            </div>
+            <p class="review-text">
+                J'ai adoré ce film ! Les acteurs étaient incroyables et l'histoire captivante. Je recommande vivement !
+            </p>
+        </div>
 
+        <div class="review">
+            <div class="review-header">
+                <h3>Marie Curie</h3>
+                <div class="stars">
+                    ★★★☆☆
+                </div>
+            </div>
+            <p class="review-text">
+                Le film était correct, mais j'ai trouvé que le rythme était un peu lent par moments.
+            </p>
+        </div>
 
+        <div class="review">
+            <div class="review-header">
+                <h3>Paul Martin</h3>
+                <div class="stars">
+                    ★★★★★
+                </div>
+            </div>
+            <p class="review-text">
+                Un chef-d'œuvre ! C'est l'un des meilleurs films que j'ai vus cette année. Bravo à toute l'équipe !
+            </p>
+        </div>
+
+    </div>
 </body>
 
 </html>

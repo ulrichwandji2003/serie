@@ -5,3 +5,4 @@ from .models import *
 
 admin.site.register(Reservation)
 admin.site.register(Tiquet)
+admin.site.register(Avis)

@@ -21,3 +21,15 @@ class Tiquet(models.Model):
 
     def __str__(self):
         return self.nom
+    
+
+from django.db import models
+
+class Avis(models.Model):
+    nom = models.CharField(max_length=100)  # Nom du visiteur
+    commentaire = models.TextField()  # Texte de l'avis
+    note = models.PositiveIntegerField()  # Note sur 5
+    date = models.DateTimeField(auto_now_add=True)  # Date de soumission
+
+    def __str__(self):
+        return f"{self.nom} - {self.note}/5"
