@@ -5,11 +5,9 @@ from Reservation.models import Avis
 
 # Create your views here.
 
-def Inscription1(request):
-    return render(request, "Inscription/Inscription1.html")
 
 def Inscription(request):
-    return render(request, "Inscription/Inscription.html")
+    return render(request, "Inscription/inscription.html")
 
 def Connexion(request):
     return render(request, "Connexion/Connexion.html")
