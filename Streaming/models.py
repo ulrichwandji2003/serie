@@ -12,8 +12,9 @@ class Streaming(models.Model):
     Note = models.CharField(max_length=50)
     Date_streaming = models.DateField(blank=True, null=True)
     Type_streaming = models.CharField(max_length=50, default="film")
-    Image_streaming = models.ImageField(upload_to='Telechargement')
-    Video_streaming = models.FileField(upload_to='Telechargement')
+    # Image_streaming = models.ImageField(upload_to='Telechargement')
+    image_url = models.URLField(max_length=500, verbose_name="Lien de l'image")
+    # Video_streaming = models.FileField(upload_to='Telechargement')
     Prix_streaming = models.IntegerField()
     Salle_streaming = models.CharField(max_length=50)
 

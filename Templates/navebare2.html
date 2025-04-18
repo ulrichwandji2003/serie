@@ -7,7 +7,7 @@
 <div class="movies">
     {% for stream in stream %}
     <div class="movie" onclick="window.location.href='{% url 'detail_stream' stream.pk %}'">
-        <img src="{{stream.Image_streaming.url}}" alt="Spyderman">
+        <img src="{{stream.image_url}}" alt="Spyderman">
         <div class="movie-info">
             <h3>{{stream.Nom_streaming}}</h3>
             <p>Le {{stream.Date_streaming}}</p>
