@@ -6,7 +6,7 @@ from .views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', navebare1, name="navebare1"),
+    path('', couverture, name="couverture"),
     path('', include('Authentification.urls')),
     path('', include('Streaming.urls')),
     path('', include('Reservation.urls')),

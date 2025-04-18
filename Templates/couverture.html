@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CINE.NICE - Page de Couverture</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        header {
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1517602302552-471fe67acf66') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 4em;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        header p {
+            font-size: 1.5em;
+            margin-top: 1em;
+            animation: fadeInUp 3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: scale(0.9);}
+            to {opacity: 1; transform: scale(1);}
+        }
+
+        @keyframes fadeInUp {
+            from {opacity: 0; transform: translateY(50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        .carousel {
+            white-space: nowrap;
+            overflow: hidden;
+            margin: 50px 0;
+        }
+
+        .carousel-track {
+            display: inline-block;
+            animation: scroll 40s linear infinite;
+        }
+
+        .carousel img {
+            height: 250px;
+            margin: 0 15px;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .carousel img:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        section {
+            padding: 4em 2em;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease-in-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2em;
+            background: #111;
+            color: #aaa;
+        }
+
+        @media screen and (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            .carousel img {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>CINE.NICE</h1>
+        <p>Bienvenue dans l’univers du 7ème art</p>
+    </header>
+
+    <div class="carousel">
+        <div class="carousel-track">
+            <img src="https://image.tmdb.org/t/p/w300/8YFL5QQVPy3AgrEQxNYVSgiPEbe.jpg" alt="film 1">
+            <img src="https://image.tmdb.org/t/p/w300/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg" alt="film 2">
+            <img src="https://image.tmdb.org/t/p/w300/3bhkrj58Vtu7enYsRolD1fZdja1.jpg" alt="film 3">
+            <img src="https://image.tmdb.org/t/p/w300/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg" alt="film 4">
+            <img src="https://image.tmdb.org/t/p/w300/6Wdl9N6dL0Hi0T1qJLWSz6gMLbd.jpg" alt="film 5">
+            <img src="https://image.tmdb.org/t/p/w300/hZI2HEN2yxVQKceS0vzpUwhudMj.jpg" alt="film 6">
+            <!-- Repeat to keep scroll continuous -->
+            <img src="https://image.tmdb.org/t/p/w300/8YFL5QQVPy3AgrEQxNYVSgiPEbe.jpg" alt="film 1">
+            <img src="https://image.tmdb.org/t/p/w300/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg" alt="film 2">
+        </div>
+    </div>
+
+    <section>
+        <h2>Plongez dans un monde cinématographique incroyable</h2>
+        <p>Avec CINE.NICE, découvrez les dernières bandes-annonces, réservez vos billets et suivez l'actualité de vos stars préférées.</p>
+    </section>
+
+    <section>
+        <h2>Un scroll infini d’histoires et d’émotions</h2>
+        <p>Explorez un large éventail de films, des classiques intemporels aux nouveautés en avant-première.</p>
+    </section>
+
+    <footer>
+        © 2025 CINE.NICE. Tous droits réservés.
+    </footer>
+
+    <script>
+        // Effet scroll reveal
+        const sections = document.querySelectorAll("section");
+
+        window.addEventListener("scroll", () => {
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    section.classList.add("visible");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

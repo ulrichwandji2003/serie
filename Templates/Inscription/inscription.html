@@ -5,135 +5,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'jquery-3.7.0.min.js' %}">
     <title>Connexion</title>
     <style>
         body {
             background-image: url("{% static 'Media/image/spider.jpg' %}");
             background-repeat: no-repeat;
             background-size: cover;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
         }
 
-        div .face{
-            border: 2px solid red;
-            color: red;
-            height: 55%;
-            width: 45%;
-            cursor: pointer;
-            border-radius: 25px 25px;
+        .containe {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 5% 2%;
         }
 
-        div .insta{
-            border: 2px solid red;
-            color: red;
-            height: 55%;
-            width: 45%;
-            margin-left: 10%;
-            cursor: pointer;
-            border-radius: 25px 25px;
+        .div1,
+        .div2 {
+            flex: 1 1 300px;
+            max-width: 500px;
+            /* background-color: rgba(255, 255, 255, 0.8); */
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        div .face:hover, div .insta:hover{
+        .text h1,
+        .label h1,
+        .label h2,
+        .label h4 {
+            margin-bottom: 15px;
+        }
+
+        .info input {
+            width: 70%;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 25px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+
+        .info button {
+            padding: 10px;
+            margin-top: 30px;
+            width: 75%;
+            border-radius: 25px;
+            border: 1px solid #ccc;
+            background-color: #3498db;
             color: white;
-            background: red;
+            cursor: pointer;
+        }
+
+        .info button:hover {
+            background-color: #2980b9;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .face,
+        .insta {
+            flex: 1;
+            margin: 0 10px;
+            padding: 10px;
+            border: 2px solid red;
+            color: red;
+            text-align: center;
+            border-radius: 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .face:hover,
+        .insta:hover {
+            background-color: red;
+            color: white;
+        }
+
+        .face img,
+        .insta img {
+            width: 20px;
+            height: 20px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .containe {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .info input {
+                width: 90%;
+                padding: 10px;
+                margin-top: 20px;
+                border-radius: 25px;
+                border: 1px solid #ccc;
+                font-size: 1em;
+            }
+
+            .info button {
+                padding: 10px;
+                margin-top: 30px;
+                width: 95%;
+                border-radius: 25px;
+                border: 1px solid #ccc;
+                background-color: #3498db;
+                color: white;
+                cursor: pointer;
+            }
+
+            .face,
+            .insta {
+                margin: 10px 0;
+            }
         }
     </style>
 </head>
 
 <body>
     {% include "navebare1.html" %}
-    <br><br><br><br><br><br>
-    <div class="containe"
-        style="display: flex;justify-content: space-between;position: fixed;width: 95%;height: 75%;margin-left: 3%;overflow: auto;word-wrap: break-word;">
+    <br><br><br><br>
+    <div class="containe">
 
-
-        <div class="div2" style="width: 35%;height: 100%;">
-            <div class="text" style="margin-top: 5%;margin-left: 10%;">
+        <div class="div2">
+            <div class="text">
                 <h1>S'inscrire à Cine.Nice</h1>
             </div>
 
-
-            <div class="info" style="margin-top: 10%;width: 85%;margin-left: 15%;height: 60%;">
-                <input type="text"
-                    style="width: 80%;height: 15%;border-radius: 25px 25px 25px 25px;font-size: 100%;text-align: center;"
-                    placeholder="Indiquez votre nom"><br>
-                <input type="text"
-                    style="width: 80%;height: 15%;margin-top: 5%;border-radius: 25px 25px 25px 25px;font-size: 100%;text-align: center;"
-                    placeholder="Indiquez votre Email"><br>
-                <input type="text"
-                    style="width: 80%;height: 15%;margin-top: 5%;border-radius: 25px 25px 25px 25px;font-size: 100%;text-align: center;"
-                    placeholder="Indiquez votre mote de passe"><br>
-                <input type="text"
-                    style="width: 80%;height: 15%;margin-top: 5%;border-radius: 25px 25px 25px 25px;font-size: 100%;text-align: center;"
-                    placeholder="Confirmez votre mot de passe"><br><br>
-
-
-                <button type="submit"
-                    style="width: 80%;height: 15%;border-radius: 25px 25px 25px 25px;margin-top: 5%;font-size: 100%;"
-                    >Sauvegarde</button>
-
+            <div class="info">
+                <input type="text" placeholder="Indiquez votre nom">
+                <input type="text" placeholder="Indiquez votre Email">
+                <input type="text" placeholder="Indiquez votre mot de passe">
+                <input type="text" placeholder="Confirmez votre mot de passe">
+                <button type="submit">Sauvegarde</button>
             </div>
         </div>
 
-
-        <div class="div1" style="width: 35%;height: 100%;">
-            <div class="label" style="margin-top: 15%;">
-                <h1>Lorem, ipsum dolor</h1><br>
-                <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A cupiditate, recusandae ipsam
-                    consequuntur nihil sit quos</h2><br><br>
-                <h4>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque unde beatae facere porro,
-                    voluptates amet quod accusantium vel, molestias commodi quas</h4>
-
+        <div class="div1">
+            <div class="label">
+                <h1>Lorem, ipsum dolor</h1>
+                <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</h2>
+                <h4>Lorem ipsum dolor sit amet consectetur, adipisicing elit...</h4>
             </div>
-            <div
-                style="display: flex;justify-content: space-between;margin-top: 10%;width: 60%;margin-left: 15%;height: 15%;position: relative;">
 
-
-
+            <div class="social-links">
                 <div class="face">
-
-                    <div style="display: flex;justify-content: space-between;width: 85%;margin-left: 5%;background-color: transparent !important;">
-                        <div style="margin-top: 5%;background-color: transparent !important;">
-                            <img src="{% static 'media/image/face.png' %}" alt=""
-                                style="width: 30px;height: 30px;background-color: transparent !important;">
-                        </div>
-                        <div style="margin-top: 10%;cursor: pointer;">
-                            <label for="" style="cursor: pointer;">Facebook</label>
-                        </div>
-                    </div>
-
+                    <img src="{% static 'media/image/face.png' %}" alt="">
+                    <label>Facebook</label>
                 </div>
-
-
 
                 <div class="insta">
-
-                    <div style="display: flex;justify-content: space-between;width: 85%;margin-left: 5%;">
-                        <div style="margin-top: 5%;">
-                            <img src="{% static 'media/image/insta.png' %}" alt=""
-                                style="  position:absolute;width: 35px;height: 30px;">
-                        </div>
-                        <div style="margin-top: 10%;cursor: pointer;">
-                            <label for="" style="cursor: pointer;">Instagram</label>
-                        </div>
-                    </div>
-
+                    <img src="{% static 'media/image/insta.png' %}" alt="">
+                    <label>Instagram</label>
                 </div>
-
             </div>
-
         </div>
 
     </div>
 
     <script>
-
-        // $(".face").click(function () {
-        //     $(".profil").toggle({
-        //         'display': "block",
-        //     });
-        // })
-
+        // Script JS si besoin
     </script>
 </body>
 

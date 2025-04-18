@@ -1,311 +1,135 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="fr">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}">
-    <title>CINE NICE</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #000000;
-            padding-top: 110px;
-        }
+{% block title %} contact {% endblock %}
+
+{% block content %}
+
+<style>
+    /* Style de base (desktop) - déjà en place */
+
+    .movies .contenaire {
+        width: 100%;
+        position: relative;
+        min-height: 100vh;
+        padding-bottom: 2rem;
+    }
+
+    .movies .contenaire>div {
+        background-color: rgb(0, 0, 0);
+        width: 85%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        overflow: hidden;
+        /* évite les barres de scroll horizontales */
+        margin-left: auto;
+        margin-right: auto;
+        padding: 2%;
+    }
 
 
-        header {
-            background-color: #4d4d4d;
-            color: white;
-            display: flex;
-            justify-content: space-between;
+    .movies .contenaire h1,
+    .movies .contenaire h3 {
+        color: white;
+    }
+
+    .formulaire input,
+    .formulaire textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+    }
+
+    .formulaire button {
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: none;
+        background-color: crimson;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .page a {
+        margin-right: 10px;
+        font-size: 1.5rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        .movies .contenaire>div {
+            flex-direction: column;
             align-items: center;
-            padding: 10px 20px;
-            height: 50px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-
+            height: auto;
         }
 
-        header .logo {
-            display: flex;
-            align-items: center;
+        .movies .contenaire>div>div,
+        .movies .contenaire form {
+            width: 90%;
+            margin-bottom: 2rem;
         }
-
-        header .logo img {
-            width: 90px;
-            height: 90px;
-            margin-right: 10px;
-        }
-
-        header nav {
-            display: flex;
-            align-items: center;
-            margin-right: 400px;
-            gap: 35px;
-        }
-
-        header nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 16px;
-
-        }
-
-        header nav a:hover {}
-
-        .search-bar {
-            display: flex;
-            align-items: center;
-        }
-
-        .search-bar input {
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 10px 0 0 10px;
-            outline: none;
-        }
-
-        .search-bar button {
-            padding: 5px 10px;
-            border: none;
-            background-color: red;
-            color: white;
-            border-radius: 0 10px 10px 0;
-            cursor: pointer;
-        }
-
-        .categories {
-            background-color: white;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            position: fixed;
-            top: 70px;
-            left: 0;
-            width: 100%;
-            z-index: 999;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .categories a {
-            text-decoration: none;
-            color: black;
-            font-size: 16px;
-        }
-
-        .categories a:hover {
-            text-decoration: underline;
-        }
-
-        .movies {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .movie {
-            background-color: rgb(254, 254, 254);
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            overflow: auto;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .movie img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .movie-info {
-            padding: 10px;
-            background-color: cyan;
-        }
-
-        .movie-info h3 {
-            margin: 0;
-            font-size: 18px;
-        }
-
-        .movie-info p {
-            margin: 5px 0 0;
-            font-size: 14px;
-        }
-
-        .niff {
-            display: flex;
-            gap: 25px;
-        }
-
-        .search {
-            display: flex;
-            margin-right: 50px;
-        }
+    }
 
 
+    @media screen and (max-width: 480px) {
 
-        .ligne1 {
-            margin: 1%;
-        }
-
-        .ligne1 div {
-            margin: 1%;
-        }
-
-        label .span {
-            margin-top: 1%;
-        }
-
-        div .connexion {
-            border-radius: 25px 25px;
-            width: 25%;
-            height: 30px;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        div .connexion:hover {
-            background-color: black;
-        }
-
-        .formulaire input {
-            border-radius: 15px;
-            height: 50px;
-            width: 600px;
-        }
-
-        textarea {
-            height: 150px;
-            width: 600px;
-            border-radius: 15px;
-        }
-
+        .formulaire input,
+        .formulaire textarea,
         .formulaire button {
-            height: 40px;
-            width: 100px;
-
-        }
-
-        .page {
-            text-align: center;
-            width: 60%;
-            font-size: 200%;
-            display: flex;
-            justify-content: space-between;
-            top: 0;
-            left: 0;
+            font-size: 1rem;
         }
 
         .page a {
-            overflow: hidden;
-            width: 50px;
-            height: 50px;
-            border-radius: 25px;
-            /* background-color: black; */
-            border: 2px solid black;
-            text-decoration: none;
+            font-size: 1.2rem;
         }
+    }
+</style>
 
-        .page a:hover {
-            border: 2px solid rgb(255, 0, 0);
-        }
 
-        .page i {
 
-            margin-top: 7px;
-        }
-    </style>
-</head>
+<div class="movies">
 
-<body>
-    <header>
-        <div class="logo" onclick="window.location.href='{% url 'navebare2' %}'">
-            <img src="{% static 'media/image/3.png' %}" alt="">
-        </div>
-        <nav>
-            <a href="{% url 'navebare2' %}">Accueil</a>
-            <a href="{% url 'propo' %}">A propos</a>
-            <a href="{% url 'contact' %}">Contact</a>
-            <a href="{% url 'avis' %}">Avis</a>
-        </nav>
 
-    </header>
-    <div class="categories">
-        <div class="niff">
-            <a href="{% url 'film' %}">Film</a>
-            <a href="{% url 'serie' %}">Série</a>
-            <a href="{% url 'anime' %}">Animé</a>
-            <a href="{% url 'comedie' %}">Comédie</a>
-        </div>
+    <div class="contenaire">
 
-        <div class="search">
-            <div class="search-bar">
-                <input type="text" placeholder="search bar" style="width: 200%;">
-                <button>🔍</button>
-            </div>
-        </div>
+        <div>
 
-    </div>
-    <div class="movies">
-        
-        <form action="" method="POST">
+            <div style="height: 100%;color: white;width: 30%;">
+                <h1>EMPLACEMENT</h1><br>
+                <h3>CANALOlympia Bessengue gare voyageurs bessengue, Douala</h5><br><br><br><br><br>
 
-            <div class="contenaire"
-                style="height: calc(100% - (75px + 5%));width: 100%;position: fixed;
-                ">
+                    <div>
+                        <h1>SUIVEZ NOUS</h1><br>
+                        <div class="page">
+                            <a href="" style="color: rgb(0, 105, 196);"><i class="fab fa-facebook"></i></a>
+                            <a href="" style="color: rgb(255, 145, 0);"> <i class="fab fa-instagram"></i></a>
+                            <a href="" style="color: rgb(0, 157, 255);"><i class="fab fa-twitter"></i></a>
 
-                <div
-                    style="background-color: rgb(0, 0, 0);width: 85%;display: flex;justify-content: space-between;overflow: auto;word-wrap: break-word;margin-left: auto;margin-right: auto;">
-
-                    <div style="height: 100%;color: white;width: 30%;">
-                        <h1>EMPLACEMENT</h1><br>
-                        <h3>CANALOlympia Bessengue gare voyageurs bessengue, Douala</h5><br><br><br><br><br>
-
-                            <div>
-                                <h1>SUIVEZ NOUS</h1><br>
-                                <div class="page">
-                                    <a href="" style="color: rgb(0, 105, 196);"><i class="fab fa-facebook"></i></a>
-                                    <a href="" style="color: rgb(255, 145, 0);"> <i class="fab fa-instagram"></i></a>
-                                    <a href="" style="color: rgb(0, 157, 255);"><i class="fab fa-twitter"></i></a>
-
-                                </div>
-                            </div>
-                    </div>
-
-                    <form action="" method="POST">
-
-                        {% csrf_token %}
-
-                        <div class="formulaire" style="height: 100%;color: white;">
-
-                            <h1>FORMULAIRE DE CONTACT</h1><br>
-                            <input type="text" placeholder="     Entrer votre Nom" name="nom"><br><br>
-                            <input type="email" placeholder="     Entrer votre adresse Mail" name="email"><br><br>
-                            <textarea name="message" id="" placeholder="  Entrer votre Message"></textarea><br><br>
-
-                            <button type="submit">SOUMETTRE</button>
                         </div>
+                    </div>
+            </div>
 
-                    </form>
+            <form action="" method="POST">
 
+                {% csrf_token %}
 
+                <div class="formulaire" style="height: 100%;color: white;">
+
+                    <h1>FORMULAIRE DE CONTACT</h1><br>
+                    <input type="text" placeholder="     Entrer votre Nom" name="nom"><br><br>
+                    <input type="email" placeholder="     Entrer votre adresse Mail" name="email"><br><br>
+                    <textarea name="message" id="" placeholder="  Entrer votre Message"></textarea><br><br>
+
+                    <button type="submit">SOUMETTRE</button>
                 </div>
 
+            </form>
 
-            </div>
 
-        </form>
+        </div>
+
 
     </div>
-</body>
+</div>
 
-</html>
+{% endblock %}

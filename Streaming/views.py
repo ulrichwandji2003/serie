@@ -52,6 +52,3 @@ def comedie(request):
     
 
     return render(request, "choix/Comedie.html",context)
-
-def dashbord(request):
-    return render(request, "dashbord.html")

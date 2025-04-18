@@ -12,111 +12,102 @@
             background-image: url("{% static 'Media/image/spider.jpg' %}");
             background-repeat: no-repeat;
             background-size: cover;
+            font-family: sans-serif;
         }
 
         .lienn {
             display: flex;
             justify-content: space-between;
             margin-top: 10%;
-            width: 60%;
-            margin-left: 15%;
-            height: 12%;
+            width: 90%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: auto;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
-        div .inscrip {
-            width: 45%;
-            height: 35px;
+        .inscrip,
+        .visite {
+            flex: 1;
+            min-width: 120px;
+            height: 40px;
             text-align: center;
-            font-size: 130%;
-            border-radius: 25px 25px;
+            font-size: 120%;
+            border-radius: 25px;
             border: 2px solid rgb(0, 140, 255);
             margin-top: 2%;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        div .visite {
-            width: 45%;
-            height: 35px;
-            font-size: 130%;
-            text-align: center;
-            border-radius: 25px 25px;
-            border: 2px solid rgb(0, 140, 255);
-            margin-top: 2%;
-            cursor: pointer;
-        }
-
-        div .inscrip:hover,
-        div .visite:hover {
+        .inscrip:hover,
+        .visite:hover {
             background: rgb(0, 140, 255);
-
-
         }
 
         .inscrip a,
         .visite a {
             color: rgb(255, 255, 255);
-            width: 200px;
-            height: 15%;
-            margin-top: 12%;
             text-decoration: none;
-
         }
 
         .info {
             margin-top: 10%;
-            width: 85%;
-            margin-left: 15%;
-            height: 60%;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: auto;
         }
 
         .info input {
-            width: 80%;
-            height: 15%;
-            border-radius: 25px 25px 25px 25px;
+            width: 100%;
+            height: 45px;
+            border-radius: 25px;
             font-size: 100%;
             text-align: center;
             margin-top: 5%;
+            border: none;
+            outline: none;
         }
 
-        div .con {
+        .con {
             color: rgb(31, 248, 24);
-            width: 80%;
-            height: 15%;
-            border-radius: 25px 25px 25px 25px;
+            width: 100%;
+            height: 45px;
+            border-radius: 25px;
             margin-top: 5%;
             font-size: 100%;
+            border: none;
+            cursor: pointer;
         }
 
-        div .con:hover {
+        .con:hover {
             background: rgb(31, 248, 24);
             color: white;
         }
 
-
-
-
-
         #loading-container {
             display: none;
-            /* Initialement caché */
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(182, 182, 182, 0.285);
-            /* Fond semi-transparent */
             justify-content: center;
             align-items: center;
             z-index: 1500;
-            /* Pour être au-dessus des autres éléments */
+            flex-direction: column;
         }
 
         .loader {
             border: 8px solid #f3f3f3;
-            /* Bordure grise */
             border-top: 8px solid #3498db;
-            /* Bordure bleue */
             border-radius: 50%;
             width: 50px;
             height: 50px;
@@ -132,83 +123,131 @@
                 transform: rotate(360deg);
             }
         }
+
+        .containe {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            width: 95%;
+            margin: 0 auto;
+            margin-top: 10vh;
+        }
+
+        .div1,
+        .div2 {
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+        }
+
+        .text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        @media screen and (min-width: 768px) {
+            .containe {
+                flex-wrap: nowrap;
+                height: 75%;
+                position: fixed;
+                left: 0;
+                right: 0;
+            }
+
+            .div1,
+            .div2 {
+                width: 45%;
+                height: 100%;
+            }
+
+        }
+
+        @media screen and (max-width: 480px) {
+            .text h1 {
+                font-size: 1.5rem;
+                text-align: center;
+            }
+
+            .label h1,
+            .label h2,
+            .label h4 {
+                font-size: 1rem;
+                text-align: center;
+            }
+
+            .lienn {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .inscrip,
+            .visite {
+                width: 80%;
+                margin-bottom: 10px;
+            }
+
+            .info input,
+            .con {
+                height: 40px;
+            }
+        }
     </style>
 </head>
 
 <body>
     {% include "navebare1.html" %}
-    <br><br><br><br><br><br>
+    <br><br>
 
-    <div class="containe"
-        style="display: flex;justify-content: space-between;position: fixed;width: 95%;height: 75%;margin-left: 3%;">
-
-        <div class="div1" style="width: 35%;height: 100%;">
-
-            <div class="label" style="margin-top: 15%;">
+    <div class="containe">
+        <div class="div1">
+            <div class="label" style="margin-top: 10%;">
                 <h1>Lorem, ipsum dolor</h1><br>
-                <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A cupiditate, recusandae ipsam
-                    consequuntur nihil sit quos</h2><br><br>
-                <h4>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque unde beatae facere porro,
-                    voluptates amet quod accusantium vel, molestias commodi quas</h4>
+                <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2><br><br>
+                <h4>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque unde beatae facere porro.</h4>
             </div>
 
             <div class="lienn">
-
                 <div class="inscrip" onclick="window.location.href='{% url 'inscription' %}'">
                     <a href="{% url 'inscription' %}">inscription</a>
                 </div>
-
                 <div class="visite" onclick="window.location.href='{% url 'navebare1' %}'">
-                    <a href="{% url 'navebare1' %}" style="margin-top: 15%;">Visite</a>
+                    <a href="{% url 'navebare1' %}">Visite</a>
                 </div>
-
             </div>
-
         </div>
 
-        <div class="div2" style="width: 35%;height: 100%;">
-
-            <div class="text" style="margin-top: 5%;margin-left: 10%;">
+        <div class="div2">
+            <div class="text">
                 <h1>Se connecté à Cine.Nice</h1>
             </div>
 
             <div class="info">
                 <input type="text" placeholder="Indiquez votre pseudo"><br>
                 <input type="text" placeholder="Indiquez votre Email"><br>
-                <input type="text" placeholder="Indiquez votre mote de passe"><br><br><br>
-
-
+                <input type="text" placeholder="Indiquez votre mot de passe"><br><br>
                 <button type="submit" id="monBouton" class="con">connexion</button>
-                <!-- onclick="window.location.href='{% url 'navebare2' %}'" -->
             </div>
-
         </div>
-
     </div>
+
     <div id="loading-container">
         <div class="loader"></div>
         <p>Chargement...</p>
     </div>
-
 
     <script>
         const bouton = document.getElementById('monBouton');
         const loadingContainer = document.getElementById('loading-container');
 
         bouton.addEventListener('click', function () {
-            // Afficher la page de chargement
             loadingContainer.style.display = 'flex';
 
-            // Simuler un chargement de 5 secondes
             setTimeout(function () {
-                // Masquer la page de chargement
                 loadingContainer.style.display = 'none';
-                // Rediriger vers une autre page
-                window.location.href="{% url 'navebare2' %}"; // Remplacez par l'URL souhaitée
-            }, 3000); // 5000 millisecondes = 5 secondes
+                window.location.href = "{% url 'navebare2' %}";
+            }, 3000);
         });
     </script>
-
 </body>
 
 </html>

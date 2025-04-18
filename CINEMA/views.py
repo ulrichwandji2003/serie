@@ -1,5 +1,5 @@
 from django.shortcuts import render
 
-def navebare1(request):
-    return render(request, "navebare1.html")
+def couverture(request):
+    return render(request, "couverture.html")
 

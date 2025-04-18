@@ -1,280 +1,140 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="fr">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}">
-    <title>CINE NICE</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #000000;
-            padding-top: 110px;
-        }
+{% block title %} propo {% endblock %}
 
+{% block content %}
 
-        header {
-            background-color: #4d4d4d;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            height: 50px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
+<style>
+    .movies {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
 
-        }
+    .movie {
+        background-color: rgb(254, 254, 254);
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        overflow: auto;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
 
-        header .logo {
-            display: flex;
-            align-items: center;
-        }
+    .movie img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+    }
 
-        header .logo img {
-            width: 90px;
-            height: 90px;
-            margin-right: 10px;
-        }
+    .movie-info {
+        padding: 10px;
+        background-color: cyan;
+    }
 
-        header nav {
-            display: flex;
-            align-items: center;
-            margin-right: 400px;
-            gap: 35px;
-        }
+    .movie-info h3 {
+        margin: 0;
+        font-size: 18px;
+    }
 
-        header nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 16px;
+    .movie-info p {
+        margin: 5px 0 0;
+        font-size: 14px;
+    }
+</style>
 
-        }
+<div class="movies">
 
-        header nav a:hover {}
+    <form action="" method="POST">
 
-        .search-bar {
-            display: flex;
-            align-items: center;
-        }
+        <div class="contenaire" style="height: calc(100% - (75px + 5%));width: 100%;color: white;">
 
-        .search-bar input {
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 10px 0 0 10px;
-            outline: none;
-        }
+            <div style="width: 100%;overflow: auto;">
 
-        .search-bar button {
-            padding: 5px 10px;
-            border: none;
-            background-color: red;
-            color: white;
-            border-radius: 0 10px 10px 0;
-            cursor: pointer;
-        }
+                <main>
+                    <section id="accueil">
+                        <h2>Bienvenue sur notre site de cinéma !</h2>
+                        <p>Découvrez les dernières sorties, les horaires des séances et réservez vos places en
+                            ligne.</p>
+                    </section>
 
-        .categories {
-            background-color: white;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            position: fixed;
-            top: 70px;
-            left: 0;
-            width: 100%;
-            z-index: 999;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+                    <section id="films">
+                        <h2>Films à l'affiche</h2>
+                        <div class="film">
+                            <img src="film1.jpg" alt="Affiche du film 1">
+                            <h3>Titre du film 1</h3>
+                            <p>Description du film 1...</p>
+                        </div>
+                        <div class="film">
+                            <img src="film2.jpg" alt="Affiche du film 2">
+                            <h3>Titre du film 2</h3>
+                            <p>Description du film 2...</p>
+                        </div>
+                        {/* Ajoutez d'autres films ici */}
+                    </section>
 
-        .categories a {
-            text-decoration: none;
-            color: black;
-            font-size: 16px;
-        }
+                    <section id="seances">
+                        <h2>Horaires des séances</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Film</th>
+                                    <th>Salle</th>
+                                    <th>Horaire</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Film 1</td>
+                                    <td>Salle 1</td>
+                                    <td>14h00</td>
+                                </tr>
+                                <tr>
+                                    <td>Film 2</td>
+                                    <td>Salle 2</td>
+                                    <td>16h30</td>
+                                </tr>
+                                {/* Ajoutez d'autres séances ici */}
+                            </tbody>
+                        </table>
+                    </section>
 
-        .categories a:hover {
-            text-decoration: underline;
-        }
+                    <section id="reservation">
+                        <h2>Réservation en ligne</h2>
+                        <form>
+                            <label for="film">Film :</label>
+                            <select id="film" name="film">
+                                <option value="film1">Film 1</option>
+                                <option value="film2">Film 2</option>
+                            </select>
+                            <label for="seance">Séance :</label>
+                            <select id="seance" name="seance">
+                                <option value="seance1">14h00 - Salle 1</option>
+                                <option value="seance2">16h30 - Salle 2</option>
+                            </select>
+                            <label for="places">Nombre de places :</label>
+                            <input type="number" id="places" name="places" min="1" value="1">
+                            <button type="submit">Réserver</button>
+                        </form>
+                    </section>
 
-        .movies {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
+                    <section id="compte">
+                        <h2>Mon Compte</h2>
+                        <p>Connectez-vous pour consulter vos réservations et vos informations personnelles.</p>
+                        <a href="connexion.html">Se connecter</a>
+                    </section>
+                </main>
 
-        .movie {
-            background-color: rgb(254, 254, 254);
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            overflow: auto;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .movie img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .movie-info {
-            padding: 10px;
-            background-color: cyan;
-        }
-
-        .movie-info h3 {
-            margin: 0;
-            font-size: 18px;
-        }
-
-        .movie-info p {
-            margin: 5px 0 0;
-            font-size: 14px;
-        }
-
-        .niff {
-            display: flex;
-            gap: 25px;
-        }
-        .search {
-            display: flex;
-            margin-right: 50px;
-        }
-    </style>
-</head>
-
-<body>
-    <header>
-        <div class="logo" onclick="window.location.href='{% url 'navebare2' %}'">
-            <img src="{% static 'media/image/3.png' %}" alt="">
-        </div>
-        <nav>
-            <a href="{% url 'navebare2' %}">Accueil</a>
-            <a href="{% url 'propo' %}">A propos</a>
-            <a href="{% url 'contact' %}">Contact</a>
-            <a href="{% url 'avis' %}">Avis</a>
-        </nav>
-
-    </header>
-    <div class="categories">
-        <div class="niff">
-            <a href="{% url 'film' %}">Film</a>
-            <a href="{% url 'serie' %}">Série</a>
-            <a href="{% url 'anime' %}">Animé</a>
-            <a href="{% url 'comedie' %}">Comédie</a>
-        </div>
-
-        <div class="search">
-            <div class="search-bar">
-                <input type="text" placeholder="search bar" style="width: 200%;">
-                <button>🔍</button>
-            </div>
-        </div>
-
-    </div>
-    <div class="movies">
-        
-        <form action="" method="POST">
-
-            <div class="contenaire" style="height: calc(100% - (75px + 5%));width: 100%;color: white;">
-
-                <div style="width: 100%;overflow: auto;">
-
-                    <main>
-                        <section id="accueil">
-                            <h2>Bienvenue sur notre site de cinéma !</h2>
-                            <p>Découvrez les dernières sorties, les horaires des séances et réservez vos places en
-                                ligne.</p>
-                        </section>
-
-                        <section id="films">
-                            <h2>Films à l'affiche</h2>
-                            <div class="film">
-                                <img src="film1.jpg" alt="Affiche du film 1">
-                                <h3>Titre du film 1</h3>
-                                <p>Description du film 1...</p>
-                            </div>
-                            <div class="film">
-                                <img src="film2.jpg" alt="Affiche du film 2">
-                                <h3>Titre du film 2</h3>
-                                <p>Description du film 2...</p>
-                            </div>
-                            {/* Ajoutez d'autres films ici */}
-                        </section>
-
-                        <section id="seances">
-                            <h2>Horaires des séances</h2>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Film</th>
-                                        <th>Salle</th>
-                                        <th>Horaire</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Film 1</td>
-                                        <td>Salle 1</td>
-                                        <td>14h00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Film 2</td>
-                                        <td>Salle 2</td>
-                                        <td>16h30</td>
-                                    </tr>
-                                    {/* Ajoutez d'autres séances ici */}
-                                </tbody>
-                            </table>
-                        </section>
-
-                        <section id="reservation">
-                            <h2>Réservation en ligne</h2>
-                            <form>
-                                <label for="film">Film :</label>
-                                <select id="film" name="film">
-                                    <option value="film1">Film 1</option>
-                                    <option value="film2">Film 2</option>
-                                </select>
-                                <label for="seance">Séance :</label>
-                                <select id="seance" name="seance">
-                                    <option value="seance1">14h00 - Salle 1</option>
-                                    <option value="seance2">16h30 - Salle 2</option>
-                                </select>
-                                <label for="places">Nombre de places :</label>
-                                <input type="number" id="places" name="places" min="1" value="1">
-                                <button type="submit">Réserver</button>
-                            </form>
-                        </section>
-
-                        <section id="compte">
-                            <h2>Mon Compte</h2>
-                            <p>Connectez-vous pour consulter vos réservations et vos informations personnelles.</p>
-                            <a href="connexion.html">Se connecter</a>
-                        </section>
-                    </main>
-
-                    <footer>
-                        <p>&copy; 2024 Site de Cinéma</p>
-                    </footer>
-
-                </div>
-
+                <footer>
+                    <p>&copy; 2024 Site de Cinéma</p>
+                </footer>
 
             </div>
 
-        </form>
 
-    </div>
-</body>
+        </div>
 
-</html>
+    </form>
+
+</div>
+
+{% endblock %}
