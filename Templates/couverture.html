@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +21,7 @@
 
         header {
             height: 100vh;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1517602302552-471fe67acf66') no-repeat center center/cover;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1517602302552-471fe67acf66') no-repeat center center/cover;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -40,13 +41,27 @@
         }
 
         @keyframes fadeIn {
-            from {opacity: 0; transform: scale(0.9);}
-            to {opacity: 1; transform: scale(1);}
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         @keyframes fadeInUp {
-            from {opacity: 0; transform: translateY(50px);}
-            to {opacity: 1; transform: translateY(0);}
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .carousel {
@@ -72,8 +87,13 @@
         }
 
         @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
         }
 
         section {
@@ -105,13 +125,39 @@
                 height: 150px;
             }
         }
+
+        .login-link {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            background-color: #ff36;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-link:hover {
+            background-color: #07b26893;
+        }
+
+        @media screen and (max-width: 768px) {
+            .login-link {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <header>
         <h1>CINE.NICE</h1>
         <p>Bienvenue dans l’univers du 7ème art</p>
+        <a href="{% url 'connexion' %}" class="login-link">Log in</a>
     </header>
 
     <div class="carousel">
@@ -130,7 +176,8 @@
 
     <section>
         <h2>Plongez dans un monde cinématographique incroyable</h2>
-        <p>Avec CINE.NICE, découvrez les dernières bandes-annonces, réservez vos billets et suivez l'actualité de vos stars préférées.</p>
+        <p>Avec CINE.NICE, découvrez les dernières bandes-annonces, réservez vos billets et suivez l'actualité de vos
+            stars préférées.</p>
     </section>
 
     <section>
@@ -156,4 +203,5 @@
         });
     </script>
 </body>
+
 </html>
