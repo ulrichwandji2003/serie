@@ -2,9 +2,6 @@ import os
 from pathlib import Path
 
 
-CINETPAY_SITE_ID = "105890778"
-CINETPAY_API_KEY = "143797943467e42d9ddb5c88.31998236"
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,7 +21,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'cinetpay',
     'Streaming',
     'Reservation',
     'Code_barre',
